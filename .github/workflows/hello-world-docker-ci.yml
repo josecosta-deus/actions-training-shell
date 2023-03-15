@@ -1,13 +1,13 @@
 name: CI Build for Docker Action
 on:
   push:
-    branches: 
+    branches:
       - main
     paths: hello-world-docker-action/**
   workflow_dispatch:
     inputs:
       environment:
-        description: 'Environment to deploy to'
+        description: "Environment to deploy to"
         type: environment
         required: true
 
@@ -34,14 +34,14 @@ jobs:
       - run: echo "🧪 Testing..."
 
   Load-Test:
-      runs-on: ubuntu-latest
-      if: github.event_name == 'workflow_dispatch'
-      needs: Build
-      environment: Load-Test
-      steps:
-        - run: |
-            echo "🧪 Testing..."
-            sleep 15
+    runs-on: ubuntu-latest
+    if: github.event_name == 'workflow_dispatch'
+    needs: Build
+    environment: Load-Test
+    steps:
+      - run: |
+          echo "🧪 Testing..."
+          sleep 15
 
   Production:
     runs-on: ubuntu-latest

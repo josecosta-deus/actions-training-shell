@@ -2,7 +2,7 @@ name: Init
 
 on: [create, workflow_dispatch]
 
-permissions: 
+permissions:
   issues: write
   contents: read
 
