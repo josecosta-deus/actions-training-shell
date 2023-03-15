@@ -1,0 +1,35 @@
+name: GitHub Actions Demo
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore: [.github/**]
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: "Log level"
+        required: true
+        default: "warning"
+      tags:
+        description: "Test scenario tags"
+
+jobs:
+  Build:
+    runs-on: ubuntu-latest # windows-latest | macos-latest
+    name: Test changed-files
+    steps:
+      - name: Get changed files in the docs folder
+        id: changed-files-specific
+        uses: tj-actions/changed-files@v35
+        with:
+          files: docs/*.{md} # Alternatively using: `docs/**` or `docs`
+
+      - name: Run step if any file(s) in the docs folder change
+        if: steps.changed-files-specific.outputs.any_changed == 'true'
+        run: |
+          echo "One or more files in the docs folder has changed."
+          echo "List all the files that have changed: ${{ steps.changed-files-specific.outputs.all_changed_files }}"
