@@ -1,4 +1,4 @@
-name: GitHub Actions Demo
+name: Conditional jobs
 
 on:
   push:
