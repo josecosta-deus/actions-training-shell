@@ -1,0 +1,10 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: actions-training-shell
+  annotations:
+    github.com/project-slug: josecosta-deus/actions-training-shell
+spec:
+  type: other
+  lifecycle: unknown
+  owner: josecosta-deus
